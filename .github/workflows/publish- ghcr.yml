@@ -11,8 +11,13 @@ jobs:
         run: npm ci
       - name: run the unit tests
         run: npm test
-      - name: Build and push the image
+      - name: Publish the image to github container registry
         run: |
-          docker login --username Saicharan1505 --password ${{secrets.ACCESS_TOKEN}} ghcr.io
-          docker build -t ghcr.io/Saicharan1505/arithmetic-service:latest --file Dockerfile .  
-          docker push ghcr.io/Saicharan1505/arithmetic-service:latest
+          docker login --username saicharan1505 --password ${{secrets.ACCESS_TOKEN}} ghcr.io
+          docker build -t ghcr.io/saicharan1505/arithmetic-service:latest --file Dockerfile .  
+          docker push ghcr.io/saicharan1505/arithmetic-service:latest
+      - name: Publish the image to azure container registry
+        run: |
+          docker login --username charanpracticum15 --password ${{secrets.AZURE_CONTAINER_REGISTRY}} charanpracticum15.azurecr.io
+          docker tag ghcr.io/saicharan1505/arithmetic-service:latest charanpracticum15.azurecr.io/arithmetic-service:latest
+          docker push charanpracticum15.azurecr.io/arithmetic-service:latest
