@@ -18,6 +18,6 @@ jobs:
           docker push ghcr.io/saicharan1505/arithmetic-service:latest
       - name: Publish the image to azure container registry
         run: |
-          echo ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }} | docker login --username charanpracticum15 --password-stdin charanpracticum15.azurecr.io
-          docker tag ghcr.io/saicharan1505/arithmetic-service:latest charanpracticum15.azurecr.io/arithmetic-service:latest
-          docker push charanpracticum15.azurecr.io/arithmetic-service:latest
+          echo ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }} | docker login --username practicum16 --password-stdin practicum16charan.azurecr.io
+          docker tag ghcr.io/saicharan1505/arithmetic-service:latest practicum16charan.azurecr.io/arithmetic-service:latest
+          docker push practicum16charan.azurecr.io/arithmetic-service:latest
